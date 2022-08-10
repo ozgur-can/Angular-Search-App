@@ -1,0 +1,38 @@
+[
+  {
+    "name": "react"
+  },
+  {
+    "name": "angular"
+  },
+  {
+    "name": "vue"
+  },
+  {
+    "name": "svelte"
+  },
+  {
+    "name": "backbone"
+  },
+  {
+    "name": "ember"
+  },
+  {
+    "name": "lit"
+  },
+  {
+    "name": "preact"
+  },
+  {
+    "name": "ext"
+  },
+  {
+    "name": "aurelia"
+  },
+  {
+    "name": "elm"
+  },
+  {
+    "name": "stencil"
+  }
+]
