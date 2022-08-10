@@ -2,7 +2,10 @@
     <div class="container ml-10 md:mx-auto mt-40 flex items-start">
         <div class="flex-col">
             <div class="lowercase font-extralight text-2xl text-gray-500 select-none">type to search</div>
-            <input #searchInput autofocus [ngModel]="!isAnimationEnd ? searchValue: null" (ngModelChange)="isHidden && searchValue=$event" class="lowercase mt-5 text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full" placeholder="search">  
+            <div class="relative">
+                <label #searchLabel class="absolute opacity-25 lowercase mt-6 md:mt-8 p-0 text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full">search</label>
+                <input #searchInput autofocus [ngModel]="!isAnimationEnd ? searchValue: null" (ngModelChange)="isHidden && searchValue=$event" class="lowercase mt-5 text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full" placeholder="search">  
+            </div>
             <ul class="font-extrabold mt-16 font-mono text-lg select-none">
                 <li class="mb-2">React</li>
                 <li class="mb-2">Angular</li>
@@ -18,6 +21,6 @@
                 <li class="mb-2">Stencil</li>
             </ul>
         </div>
-        <button (click)="hideSearch()" class="mr-10 md:mr-0 leading-tight font-extralight text-9xl text-gray-500">X<span class="block text-3xl invisible md:visible">esc</span></button>
+        <button (click)="hideSearch()" class="mr-20 md:mr-0 leading-tight font-extralight text-9xl text-gray-500">X<span class="block text-3xl invisible md:visible">esc</span></button>
     </div>
 </div>

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SearchOverlayComponent } from './search-overlay/search-overlay.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchService } from './search.service';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
