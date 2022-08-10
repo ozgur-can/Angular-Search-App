@@ -7,7 +7,7 @@ import { IFramework } from './shared/interfaces';
   providedIn: 'root'
 })
 export class SearchService {
-  private url: string = 'http://localhost:4200/assets/frameworks.json';
+  private url: string = './assets/frameworks.json';
   constructor(private http: HttpClient) { }
 
   getFrameworks(): Observable<IFramework[]> {
