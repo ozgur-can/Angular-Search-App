@@ -29,7 +29,7 @@ export class SearchOverlayComponent implements OnInit {
   @Input() isHidden: boolean = true;
   @Output() toggleEvent = new EventEmitter<boolean | MouseEvent>();
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
-  @ViewChild('searchLabel') searchLabel!: ElementRef<HTMLLabelElement>;
+  @ViewChild('searchSuggestion') searchSuggestion!: ElementRef<HTMLLabelElement>;
   searchValue: string = '';
   isAnimationEnd: boolean = false;
   searchTerm: string = '';
@@ -60,33 +60,20 @@ export class SearchOverlayComponent implements OnInit {
       return;
     }
     
+    // get searchTerm value from input DOM
     this.searchTerm = this.searchInput.nativeElement.value;
 
+    // clear label if input empty
     if (this.searchTerm.length === 0) {
-      this.searchLabel.nativeElement.textContent = '';
+      this.searchSuggestion.nativeElement.textContent = '';
     }
 
-    // enter
-    if (event.key === 'Enter') {
+    // enter or spacebar
+    if (event.key === 'Enter' || event.keyCode === 32) {
       this.toggleEvent.emit(true);
     }
 
-    // spacebar
-    else if (event.keyCode === 32) {
-      this.toggleEvent.emit(true);
-    } 
-    
-    else if (event.key === 'Backspace') {
-      if (this.searchTerm && this.searchTerm.length > 0) {
-      }
-
-      if(this.searchTerm && this.searchTerm.length === 0){
-        this.searchLabel.nativeElement.style.visibility = 'hidden';
-        this.searchLabel.nativeElement.textContent = '';
-      }
-    }
-
-    // emit true only between a-z & enter & spacebar
+    // emit true only between a-z
     else if (
       (event.keyCode >= 65 && event.keyCode <= 90) ||
       (event.keyCode >= 188 && event.keyCode <= 221)
@@ -95,7 +82,8 @@ export class SearchOverlayComponent implements OnInit {
       // search value, return if match any
       const searchResult = this.frameworks.find(item => item.name[0] === this.searchTerm[0] && item.name.includes(this.searchTerm));
       if (searchResult) {
-        this.searchLabel.nativeElement.textContent = searchResult.name;
+        // set search suggestion value
+        this.searchSuggestion.nativeElement.textContent = searchResult.name;
       }
 
       this.toggleEvent.emit(true);
@@ -104,10 +92,10 @@ export class SearchOverlayComponent implements OnInit {
     }
   }
 
-  // remove input value after animation
+  // remove input value & search suggestion value after animation
   onAnimationEnd() {
     this.searchValue = '';
-    this.searchLabel.nativeElement.textContent = '';
+    this.searchSuggestion.nativeElement.textContent = '';
     this.isAnimationEnd = true;
   }
   
