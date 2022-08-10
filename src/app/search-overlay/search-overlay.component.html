@@ -1,4 +1,4 @@
-<div [@hideShow]="!isHidden ? 'hidden' : 'visible'" (@hideShow.done)="onAnimationEnd()" (@hideShow.start)="onAnimationStart()" class="absolute top-0 left-0 w-full h-full bg-gray-50">
+<div [@hideShow]="!isHidden ? 'hidden' : 'visible'" (@hideShow.done)="onAnimationEnd()" (@hideShow.start)="onAnimationStart()" class="absolute top-0 left-0 w-full h-full flex bg-gray-50">
     <div class="container ml-10 md:mx-auto mt-40 flex items-start">
         <div class="flex-col">
             <div class="lowercase font-extralight text-2xl text-gray-500 select-none">type to search</div>
@@ -6,7 +6,7 @@
                 <label #searchLabel class="h-40 md:h-52 absolute top-12 sm:top-4 md:top-10 block bg-red-300 opacity-25 lowercase text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full">search</label>
                 <input #searchInput autofocus [ngModel]="!isAnimationEnd ? searchValue: null" (ngModelChange)="isHidden && searchValue=$event" class="relative z-40 lowercase text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full h-40 md:h-52" placeholder="search">  
             </div>
-            <ul class="font-extrabold mt-16 font-mono text-lg select-none">
+            <ul class="font-extrabold mt-0 sm:mt-12 md:mt-16 font-mono text-lg select-none">
                 <li class="mb-2">React</li>
                 <li class="mb-2">Angular</li>
                 <li class="mb-2">Vue</li>
@@ -21,6 +21,6 @@
                 <li class="mb-2">Stencil</li>
             </ul>
         </div>
-        <button (click)="hideSearch()" class="mr-20 md:mr-0 leading-tight font-extralight text-9xl text-gray-500">X<span class="block text-3xl invisible md:visible">esc</span></button>
+        <button (click)="hideSearch()" class="mr-10 md:mr-0 leading-tight font-extralight text-9xl text-gray-500">X<span class="block text-3xl invisible md:visible">esc</span></button>
     </div>
 </div>
