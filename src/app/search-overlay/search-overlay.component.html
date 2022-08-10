@@ -3,8 +3,8 @@
         <div class="flex-col">
             <div class="lowercase font-extralight text-2xl text-gray-500 select-none">type to search</div>
             <div class="relative">
-                <label #searchLabel class="absolute opacity-25 lowercase mt-6 md:mt-8 p-0 text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full">search</label>
-                <input #searchInput autofocus [ngModel]="!isAnimationEnd ? searchValue: null" (ngModelChange)="isHidden && searchValue=$event" class="lowercase mt-5 text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full" placeholder="search">  
+                <label #searchLabel class="h-40 md:h-52 absolute top-12 md:top-10 block bg-red-300 opacity-25 lowercase text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full">search</label>
+                <input #searchInput autofocus [ngModel]="!isAnimationEnd ? searchValue: null" (ngModelChange)="isHidden && searchValue=$event" class="relative z-40 lowercase text-6xl sm:text-9xl text-slate-900 font-extrabold bg-transparent select-none outline-none w-10/12 sm:w-full h-40 md:h-52" placeholder="search">  
             </div>
             <ul class="font-extrabold mt-16 font-mono text-lg select-none">
                 <li class="mb-2">React</li>
