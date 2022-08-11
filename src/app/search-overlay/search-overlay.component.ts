@@ -42,11 +42,11 @@ export class SearchOverlayComponent implements OnInit {
       .subscribe((data: IFramework[]) => this.frameworks = data);
    }
   ngOnChanges() {
-    this.focusSearchInputHandler();
+    this.searchInputFocusHandler();
   }
   
   // focus input when button is (in app component) clicked
-  focusSearchInputHandler() {
+  searchInputFocusHandler() {
     if (this.searchInput && this.searchInput.nativeElement !== document.activeElement) {
       this.searchInput.nativeElement.focus();
     }
@@ -100,7 +100,7 @@ export class SearchOverlayComponent implements OnInit {
       if (this.searchSuggestion.nativeElement && this.searchSuggestion.nativeElement.textContent
         && this.searchSuggestion.nativeElement.textContent.length > 0) {          
         this.searchInput.nativeElement.value = this.searchSuggestion.nativeElement.textContent;
-        this.focusSearchInputHandler();
+        this.searchInputFocusHandler();
       }
     }
     
