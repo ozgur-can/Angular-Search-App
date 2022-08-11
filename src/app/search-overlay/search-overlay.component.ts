@@ -42,7 +42,11 @@ export class SearchOverlayComponent implements OnInit {
       .subscribe((data: IFramework[]) => this.frameworks = data);
    }
   ngOnChanges() {
-    // focus input when button is (in app component) clicked
+    this.focusSearchInputHandler();
+  }
+  
+  // focus input when button is (in app component) clicked
+  focusSearchInputHandler() {
     if (this.searchInput && this.searchInput.nativeElement !== document.activeElement) {
       this.searchInput.nativeElement.focus();
     }
@@ -69,7 +73,7 @@ export class SearchOverlayComponent implements OnInit {
     }
 
     // enter or spacebar
-    if (event.key === 'Enter' || event.keyCode === 32) {
+    if (this.isHidden && (event.key === 'Enter' || event.keyCode === 32)) {
       this.toggleEvent.emit(true);
     }
 
@@ -90,6 +94,16 @@ export class SearchOverlayComponent implements OnInit {
     } else if (event.key === 'Escape') {
       this.toggleEvent.emit(false);
     }
+    // set suggestion value to input DOM when 'tab' is pressed
+    else if (event.key === 'Tab') {
+      debugger
+      if (this.searchSuggestion.nativeElement && this.searchSuggestion.nativeElement.textContent
+        && this.searchSuggestion.nativeElement.textContent.length > 0) {          
+        this.searchInput.nativeElement.value = this.searchSuggestion.nativeElement.textContent;
+        this.focusSearchInputHandler();
+      }
+    }
+    
   }
 
   // remove input value & search suggestion value after animation
